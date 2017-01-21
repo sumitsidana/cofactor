@@ -2,7 +2,8 @@ import bottleneck as bn
 import numpy as np
 
 from scipy import sparse
-
+from bottleneck import argpartsort
+from bn import argpartsort
 
 """
 All the data should be in the shape of (n_users, n_items)
