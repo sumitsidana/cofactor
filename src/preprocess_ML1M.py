@@ -26,7 +26,7 @@ sns.set(context="paper", font_scale=1.5, rc={"lines.linewidth": 2}, font='DejaVu
 
 # In[2]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/ml100k/'
+DATA_DIR = '/data/sidana/nnmf_ranking/ml1m/'
 
 
 # In[3]:
