@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/ml1m/pro'
+DATA_DIR = '/data/sidana/nnmf_ranking/ml20m/pro'
 
 
 # In[4]:
