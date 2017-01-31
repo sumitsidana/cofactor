@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/outbrainchallenge/pro'
+DATA_DIR = '/data/sidana/nnmf_ranking/ml20m/pro'
 
 
 # In[4]:
@@ -317,8 +317,8 @@ U, V = params['U'], params['V']
 
 print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
 print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
-print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
-print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
+print 'Test NDCG@5: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=5, vad_data=vad_data)
+print 'Test MAP@5: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=5, vad_data=vad_data)
 
 
 # In[34]:
