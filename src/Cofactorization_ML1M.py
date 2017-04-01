@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/ml1m/pro'
+DATA_DIR = '/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/len10//pro'
 
 
 # In[4]:
@@ -314,11 +314,13 @@ U, V = params['U'], params['V']
 
 
 # In[33]:
-
-print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
-print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
-print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
-print 'Test MAP@100: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=100, vad_data=vad_data)
+#user_idx = rec_eval.user_idx_generator(test_data.shape[1], test_data)
+#batch_user=user_idx.stop-user_idx.start
+#X_pred = rec_eval._make_prediction(train_data,  U, V, user_idx, batch_user,  vad_data=test_data)
+#print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
+#print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
+#print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
+print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
 
 
 # In[34]:
