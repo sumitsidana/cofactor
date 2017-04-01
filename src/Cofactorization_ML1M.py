@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = '/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/len10//pro'
+DATA_DIR = sys.argv[1]+'/pro'
 
 
 # In[4]:

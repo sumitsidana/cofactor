@@ -9,6 +9,7 @@ import datetime
 import json
 import os
 import time
+import sys
 
 import numpy as np
 
@@ -26,7 +27,7 @@ sns.set(context="paper", font_scale=1.5, rc={"lines.linewidth": 2}, font='DejaVu
 
 # In[2]:
 
-DATA_DIR = '/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/len10/'
+DATA_DIR = sys.argv[1]
 
 
 # In[3]:
