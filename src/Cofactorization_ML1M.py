@@ -314,7 +314,7 @@ U, V = params['U'], params['V']
 
 
 #write file for map
-f = open('/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/dat.results_1', 'w')
+f = open('/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/dat.results_1', 'a+')
 
 # In[33]:
 #user_idx = rec_eval.user_idx_generator(test_data.shape[1], test_data)
