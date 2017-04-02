@@ -1,7 +1,5 @@
 import bottleneck as bn
 import numpy as np
-import pandas as pd
-import sys
 
 from scipy import sparse
 
@@ -267,18 +265,7 @@ def MAP_at_k_batch(train_data, heldout_data, Et, Eb, user_idx, mu=None, k=100,
 
     X_pred = _make_prediction(train_data, Et, Eb, user_idx, batch_users, mu=mu,
                               vad_data=vad_data)
-    #Here something has to be modified
-    #First need to understand the semantics of this
-    # k = all items which is X_pred.shape[1]
-    # k is the
-    items_to_be_taken = X_pred.shape[1] - 1
-    idx_rev_sort = np.argsort(-X_pred)
-    df = pd.DataFrame(idx_rev_sort)
-    df.to_csv(sys.argv[1]+'/pr', index=True, sep=' ')
-
     idx_topk_part = bn.argpartition(-X_pred, k, axis=1)
-
-
     topk_part = X_pred[np.arange(batch_users)[:, np.newaxis],
                        idx_topk_part[:, :k]]
     idx_part = np.argsort(-topk_part, axis=1)

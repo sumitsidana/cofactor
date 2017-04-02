@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = sys.argv[1]+'/pro'
+DATA_DIR = sys.argv[1]
 
 
 # In[4]:
@@ -149,13 +149,13 @@ X = sparse.csr_matrix((n_items, n_items), dtype='float32')
 
 for lo, hi in zip(start_idx, end_idx):
     coords = np.load(os.path.join(DATA_DIR, 'coo_%d_%d.npy' % (lo, hi)))
-    
+
     rows = coords[:, 0]
     cols = coords[:, 1]
-    
+
     tmp = sparse.coo_matrix((np.ones_like(rows), (rows, cols)), shape=(n_items, n_items), dtype='float32').tocsr()
     X = X + tmp
-    
+
     print("User %d to %d finished" % (lo, hi))
     sys.stdout.flush()
 
@@ -314,7 +314,6 @@ U, V = params['U'], params['V']
 
 
 #write file for map
-f = open('/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/dat.results_1', 'a+')
 
 # In[33]:
 #user_idx = rec_eval.user_idx_generator(test_data.shape[1], test_data)
@@ -323,10 +322,7 @@ f = open('/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/dat.results
 #print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
 #print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
 #print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
-print 'Test MAP@1: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=1, vad_data=vad_data)
-
-f.write(sys.argv[2]+":"+rec_eval.map_at_k(train_data, test_data, U, V, k=1, vad_data=vad_data))
-f.close()
+print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
 
 
 # In[34]:
