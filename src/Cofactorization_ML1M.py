@@ -313,6 +313,9 @@ params = np.load(os.path.join(save_dir, 'CoFacto_K%d_iter%d.npz' % (n_components
 U, V = params['U'], params['V']
 
 
+#write file for map
+f = open('/data/sidana/adaptivity/baseline_algorithms/cofactor/ml_1m/dat.results_1', 'w')
+
 # In[33]:
 #user_idx = rec_eval.user_idx_generator(test_data.shape[1], test_data)
 #batch_user=user_idx.stop-user_idx.start
@@ -321,6 +324,9 @@ U, V = params['U'], params['V']
 #print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
 #print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
 print 'Test MAP@1: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=1, vad_data=vad_data)
+
+f.write(sys.argv[2]+":"+rec_eval.map_at_k(train_data, test_data, U, V, k=1, vad_data=vad_data))
+f.close()
 
 
 # In[34]:
