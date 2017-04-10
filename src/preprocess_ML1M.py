@@ -45,6 +45,7 @@ raw_data = pd.read_csv(os.path.join(DATA_DIR, 'ratings.csv'), header=0)
 # In[5]:
 #keep all ratings
 raw_all_data = raw_data[raw_data['rating'] > 0.0]
+raw_all_data = raw_all_data.sort_index(by=['timestamp'])
 
 # binarize the data (only keep ratings >= 4)
 raw_data = raw_data[raw_data['rating'] > 3.5]
