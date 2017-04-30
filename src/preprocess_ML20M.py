@@ -26,7 +26,7 @@ sns.set(context="paper", font_scale=1.5, rc={"lines.linewidth": 2}, font='DejaVu
 
 # In[2]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/ml20m/'
+DATA_DIR = '/data/sidana/nnmf_ranking/outbrainchallenge/'
 
 
 # In[3]:
@@ -64,7 +64,7 @@ tstamp = np.array(raw_data['timestamp'])
 
 # In[9]:
 
-print("Time span of the dataset: From %s to %s" % 
+print("Time span of the dataset: From %s to %s" %
       (timestamp_to_date(np.min(tstamp)), timestamp_to_date(np.max(tstamp))))
 
 
@@ -254,11 +254,11 @@ print len(train_raw_data), len(vad_raw_data), len(test_raw_data)
 # In[117]:
 
 train_timestamp = np.asarray(tr_vd_raw_data['timestamp'])
-print("train: from %s to %s" % (timestamp_to_date(train_timestamp[0]), 
+print("train: from %s to %s" % (timestamp_to_date(train_timestamp[0]),
                                 timestamp_to_date(train_timestamp[-1])))
 
 test_timestamp = np.asarray(test_raw_data['timestamp'])
-print("test: from %s to %s" % (timestamp_to_date(test_timestamp[0]), 
+print("test: from %s to %s" % (timestamp_to_date(test_timestamp[0]),
                                timestamp_to_date(test_timestamp[-1])))
 
 
