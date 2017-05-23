@@ -9,6 +9,7 @@ import datetime
 import json
 import os
 import time
+import sys
 
 import numpy as np
 
@@ -26,7 +27,7 @@ sns.set(context="paper", font_scale=1.5, rc={"lines.linewidth": 2}, font='DejaVu
 
 # In[2]:
 
-DATA_DIR = '/data/sidana/nnmf_ranking/ml100k/'
+DATA_DIR = sys.argv[1]
 
 
 # In[3]:
@@ -40,8 +41,11 @@ def timestamp_to_date(timestamp):
 raw_data = pd.read_csv(os.path.join(DATA_DIR, 'ratings.csv'), header=0)
 
 
-# In[5]:
 
+# In[5]:
+#keep all ratings
+raw_all_data = raw_data[raw_data['rating'] > 0.0]
+raw_all_data = raw_all_data.sort_index(by=['timestamp'])
 # binarize the data (only keep ratings >= 4)
 raw_data = raw_data[raw_data['rating'] > 3.5]
 
@@ -293,6 +297,21 @@ test_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test.csv'), index=False)
 
 
 # In[ ]:
+
+#test_all_raw_data = raw_all_data[int(0.5 * len(raw_all_data)):]
+test_all_index = np.where(raw_all_data['timestamp']==test_timestamp[0])[0][0]
+test_all_raw_data = raw_all_data[test_all_index:]
+test_all_raw_data = test_all_raw_data[test_all_raw_data['movieId'].isin(unique_sid)]
+test_all_raw_data = test_all_raw_data[test_all_raw_data['userId'].isin(unique_uid)]
+test_all_raw_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test_all_raw.csv'), index=False)
+test_all_data = numerize(test_all_raw_data)
+test_all_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test_all.csv'), index=False)
+
+
+train_all_raw_data = raw_all_data[0:test_all_index]
+train_all_raw_data = train_all_raw_data[train_all_raw_data['movieId'].isin(unique_sid)]
+train_all_raw_data = train_all_raw_data[train_all_raw_data['userId'].isin(unique_uid)]
+train_all_raw_data.to_csv(os.path.join(DATA_DIR, 'pro', 'train_all_raw.csv'), index=False)
 
 
 
