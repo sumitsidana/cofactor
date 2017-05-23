@@ -34,7 +34,7 @@ import rec_eval
 
 # In[3]:
 
-DATA_DIR = sys.argv[1]
+DATA_DIR = '/data/sidana/nnmf_ranking/ml100k/pro'
 
 
 # In[4]:
@@ -149,13 +149,13 @@ X = sparse.csr_matrix((n_items, n_items), dtype='float32')
 
 for lo, hi in zip(start_idx, end_idx):
     coords = np.load(os.path.join(DATA_DIR, 'coo_%d_%d.npy' % (lo, hi)))
-
+    
     rows = coords[:, 0]
     cols = coords[:, 1]
-
+    
     tmp = sparse.coo_matrix((np.ones_like(rows), (rows, cols)), shape=(n_items, n_items), dtype='float32').tocsr()
     X = X + tmp
-
+    
     print("User %d to %d finished" % (lo, hi))
     sys.stdout.flush()
 
@@ -313,16 +313,12 @@ params = np.load(os.path.join(save_dir, 'CoFacto_K%d_iter%d.npz' % (n_components
 U, V = params['U'], params['V']
 
 
-#write file for map
-
 # In[33]:
-#user_idx = rec_eval.user_idx_generator(test_data.shape[1], test_data)
-#batch_user=user_idx.stop-user_idx.start
-#X_pred = rec_eval._make_prediction(train_data,  U, V, user_idx, batch_user,  vad_data=test_data)
-#print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
-#print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
-#print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
-print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
+
+print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
+print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
+print 'Test NDCG@5: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=5, vad_data=vad_data)
+print 'Test MAP@100: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=100, vad_data=vad_data)
 
 
 # In[34]:
