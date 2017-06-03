@@ -107,7 +107,7 @@ raw_data = raw_data[raw_data['timestamp'] >= start_t]
 
 # In[96]:
 
-tr_vd_raw_data = raw_data[:int(0.8 * raw_data.shape[0])]
+tr_vd_raw_data = raw_data[:int(0.5 * raw_data.shape[0])]
 
 
 # In[97]:
