@@ -304,8 +304,8 @@ test_all_raw_data = raw_all_data[test_all_index:]
 #test_all_raw_data = test_all_raw_data[test_all_raw_data['movieId'].isin(unique_sid)]
 #test_all_raw_data = test_all_raw_data[test_all_raw_data['userId'].isin(unique_uid)]
 test_all_raw_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test_all_raw.csv'), index=False)
-test_all_data = numerize(test_all_raw_data)
-test_all_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test_all.csv'), index=False)
+#test_all_data = numerize(test_all_raw_data)
+#test_all_data.to_csv(os.path.join(DATA_DIR, 'pro', 'test_all.csv'), index=False)
 
 
 train_all_raw_data = raw_all_data[0:test_all_index]
