@@ -275,10 +275,11 @@ float(M_ns.nnz) / np.prod(M_ns.shape)
 
 scale = 0.03
 
-n_components = 100
+n_components = 3
 max_iter = 20
 n_jobs = 8
-lam_theta = lam_beta = 1e-5 * scale
+#lam_theta = lam_beta = 1e-5 * scale
+lam_theta = lam_beta = 0.0001
 lam_gamma = 1e-5
 c0 = 1. * scale
 c1 = 10. * scale
@@ -292,6 +293,8 @@ reload(cofacto)
 coder = cofacto.CoFacto(n_components=n_components, max_iter=max_iter, batch_size=1000, init_std=0.01, n_jobs=n_jobs, 
                         random_state=98765, save_params=True, save_dir=save_dir, early_stopping=True, verbose=True, 
                         lam_theta=lam_theta, lam_beta=lam_beta, lam_gamma=lam_gamma, c0=c0, c1=c1)
+
+cofacto.CoFacto()
 
 
 # In[30]:
