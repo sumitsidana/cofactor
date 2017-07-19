@@ -275,11 +275,11 @@ float(M_ns.nnz) / np.prod(M_ns.shape)
 
 scale = 0.03
 
-n_components = 1
+n_components = 18
 max_iter = 20
 n_jobs = 8
 #lam_theta = lam_beta = 1e-5 * scale
-lam_theta = lam_beta = 0.005
+lam_theta = lam_beta = 0.01
 lam_gamma = 1e-5
 c0 = 1. * scale
 c1 = 10. * scale
@@ -325,7 +325,7 @@ U, V = params['U'], params['V']
 #print 'Test Recall@20: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=20, vad_data=vad_data)
 #print 'Test Recall@50: %.4f' % rec_eval.recall_at_k(train_data, test_data, U, V, k=50, vad_data=vad_data)
 #print 'Test NDCG@10: %.4f' % rec_eval.normalized_dcg_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
-print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=10, vad_data=vad_data)
+print 'Test MAP@10: %.4f' % rec_eval.map_at_k(train_data, test_data, U, V, k=1, vad_data=vad_data)
 
 
 # In[34]:
