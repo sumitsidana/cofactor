@@ -275,11 +275,11 @@ float(M_ns.nnz) / np.prod(M_ns.shape)
 
 scale = 0.03
 
-n_components = 18
+n_components = 4
 max_iter = 20
 n_jobs = 8
 #lam_theta = lam_beta = 1e-5 * scale
-lam_theta = lam_beta = 0.01
+lam_theta = lam_beta = 0.005
 lam_gamma = 1e-5
 c0 = 1. * scale
 c1 = 10. * scale
