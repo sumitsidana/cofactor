@@ -239,7 +239,7 @@ print "There are total of %d unique items in the training set and %d unique item
 
 # In[114]:
 
-test_raw_data = raw_data[int(0.8 * len(raw_data)):]
+test_raw_data = raw_data[int(0.7 * len(raw_data)):]
 
 
 # In[115]:
